@@ -39,6 +39,7 @@
 
 
         <RadioButton
+            android:textColor="@color/colorText"
             android:checked="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -47,6 +48,7 @@
             android:layout_marginRight="50dp"/>
 
         <RadioButton
+            android:textColor="@color/colorText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Female"
@@ -54,21 +56,61 @@
 
     </RadioGroup>
 
-    <Button
-        android:id="@+id/btn_save"
-        android:layout_marginTop="16dp"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"/>
 
-    <ListView
-        android:id="@+id/listview"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+<LinearLayout
+    android:layout_marginTop="16dp"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_marginRight="20dp"
+        android:background="@color/colorBlue"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/save"/>
+
+        <TextView
+            android:textColor="@color/colorText"
+            android:background="@color/colorBlue"
+            android:layout_marginRight="10dp"
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@color/colorBlue"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/list"/>
+
+        <TextView
+            android:background="@color/colorBlue"
+            android:onClick="listPhone"
+            android:text="@string/btnlist"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
 
 
 </LinearLayout>
