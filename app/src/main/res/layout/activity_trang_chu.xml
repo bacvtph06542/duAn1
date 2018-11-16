@@ -58,7 +58,8 @@
 
 
 <LinearLayout
-    android:layout_marginTop="16dp"
+    android:layout_margin="20dp"
+    android:layout_marginTop="20dp"
     android:gravity="center"
     android:orientation="horizontal"
     android:layout_width="match_parent"
@@ -66,20 +67,18 @@
 
     <LinearLayout
         android:layout_marginRight="20dp"
-        android:background="@color/colorBlue"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="50dp">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/save"/>
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/luu"/>
 
         <TextView
             android:textColor="@color/colorText"
-            android:background="@color/colorBlue"
             android:layout_marginRight="10dp"
             android:id="@+id/btn_save"
             android:layout_width="wrap_content"
@@ -89,18 +88,18 @@
     </LinearLayout>
 
     <LinearLayout
-        android:background="@color/colorBlue"
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="50dp">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/list"/>
 
         <TextView
-            android:background="@color/colorBlue"
+            android:textColor="@color/colorText"
             android:onClick="listPhone"
             android:text="@string/btnlist"
             android:layout_gravity="center"
@@ -110,6 +109,14 @@
     </LinearLayout>
 
 </LinearLayout>
+
+    <TextView
+        android:id="@+id/dongbo"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="synchronized"/>
 
 
 

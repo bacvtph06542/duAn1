@@ -20,18 +20,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.macbook.duan1.Model.ContactDAO;
+import com.example.macbook.duan1.Model.DanhBa;
 import com.example.macbook.duan1.Model.PhoneBook;
 import com.example.macbook.duan1.R;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static android.support.v4.app.ActivityCompat.startActivityForResult;
 
 public class PhoneAdapter extends BaseAdapter implements Filterable {
     private Activity context;
     private ContactDAO contactDAO;
     List<PhoneBook> contactList;
+    private final int SELECT_PHOTO = 1;
     List<PhoneBook> listSort;
+    private ArrayList<DanhBa>danhBaList;
+    private ArrayAdapter<DanhBa>danhBaAdapter;
 
     private final LayoutInflater inflater;
+
+
+
 
     public PhoneAdapter(Activity context, List<PhoneBook> contactList) {
         super();
@@ -60,45 +70,54 @@ public class PhoneAdapter extends BaseAdapter implements Filterable {
 
     @NonNull
     @Override
-    public View getView(final int position, View convertView, final ViewGroup parent) {
+    public View getView( int position, View convertView, ViewGroup parent) {
         final ViewHolder holder;
         if(convertView == null){
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.activity_item,parent,false);
-            //holder.mAvatar = convertView.findViewById(R.id.img);
+
+
             holder.mCall = convertView.findViewById(R.id.img_call);
             holder.mCall.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    Intent call = new Intent();
-//                    call.setAction(Intent.ACTION_CALL);
-//                    call.setData(Uri.parse("tel:"));
-//                    context.startActivity(call);
-                    Intent call = new Intent(Intent.ACTION_CALL, Uri.parse("tel:0961378534"));
-                    if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                        // TODO: Consider calling
-
-                        return;
-                    }
+                    Intent call = new Intent();
+                    call.setAction(Intent.ACTION_CALL);
+                    call.setData(Uri.parse("tel:"+holder.mPhone.getText()));
                     context.startActivity(call);
-
+                    if (ActivityCompat.checkSelfPermission(context,Manifest.permission.CALL_PHONE)
+                            != PackageManager.PERMISSION_GRANTED){
+                    }
                 }
             });
+
            holder.mMess = convertView.findViewById(R.id.img_mess);
            holder.mMess.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
                    Intent mess = new Intent();
                    mess.setAction(Intent.ACTION_SENDTO);
-                   mess.setData(Uri.parse("sms:"+ contactList.get(position)));
+                   mess.setData(Uri.parse("sms:"+holder.mPhone.getText()));
                    context.startActivity(mess);
                }
            });
 
 
-            //  viewHolder.mSex = convertView.findViewById(R.id.tv_sex);
             holder.mName = convertView.findViewById(R.id.tv_name);
             holder.mPhone = convertView.findViewById(R.id.tv_phone);
+
+            holder.mImg =  convertView.findViewById(R.id.img);
+            holder.mImg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent camera = new Intent(Intent.ACTION_PICK);
+                    camera.setType("image/*");
+                    startActivityForResult(context , camera ,SELECT_PHOTO,null);
+                }
+
+
+            });
+
             convertView.setTag(holder);
         } else
             holder = (ViewHolder) convertView.getTag();
@@ -116,8 +135,8 @@ public class PhoneAdapter extends BaseAdapter implements Filterable {
     }
 
     public static class ViewHolder {
-        TextView mPhone, mName;
-        ImageView mCall , mMess;
+        TextView mPhone, mName ;
+        ImageView mCall , mMess , mImg;
     }
 
 
