@@ -5,6 +5,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -18,41 +20,45 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.macbook.duan1.R;
 import com.example.macbook.duan1.model.ContactDAO;
 import com.example.macbook.duan1.model.DanhBa;
 import com.example.macbook.duan1.model.PhoneBook;
+import com.example.macbook.duan1.R;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 import static android.support.v4.app.ActivityCompat.startActivityForResult;
 
-public class PhoneAdapter extends BaseAdapter implements Filterable {
+public class DanhBaAdapter extends BaseAdapter implements Filterable {
     private Activity context;
     private ContactDAO contactDAO;
     private List<PhoneBook> contactList;
     private final int SELECT_PHOTO = 1;
-    private ArrayAdapter<PhoneBook> PhoneBookAdapter;
+    private List<DanhBa>danhBaList;
+    private ArrayAdapter<DanhBa>danhBaAdapter;
 
     private final LayoutInflater inflater;
 
-
-    public PhoneAdapter(Activity context, List<PhoneBook> contactList) {
+    public DanhBaAdapter(Activity context, List<DanhBa> contactList) {
         super();
-        this.contactList = contactList;
+        this.danhBaList = contactList;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.context = context;
         contactDAO = new ContactDAO(context);
     }
 
+
+
+
     @Override
     public int getCount() {
-        return contactList.size();
+        return danhBaList.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return contactList.get(i);
+        return danhBaList.get(i);
     }
 
     @Override
@@ -83,17 +89,16 @@ public class PhoneAdapter extends BaseAdapter implements Filterable {
                 }
             });
 
-            holder.mMess = convertView.findViewById(R.id.img_mess);
-            holder.mMess.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent mess = new Intent();
-                    mess.setAction(Intent.ACTION_SENDTO);
-                    mess.setData(Uri.parse("sms:"+holder.mPhone.getText()));
-                    context.startActivity(mess);
-                }
-            });
-
+           holder.mMess = convertView.findViewById(R.id.img_mess);
+           holder.mMess.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                   Intent mess = new Intent();
+                   mess.setAction(Intent.ACTION_SENDTO);
+                   mess.setData(Uri.parse("sms:"+holder.mPhone.getText()));
+                   context.startActivity(mess);
+               }
+           });
 
             holder.mName = convertView.findViewById(R.id.tv_name);
             holder.mPhone = convertView.findViewById(R.id.tv_phone);
@@ -101,9 +106,9 @@ public class PhoneAdapter extends BaseAdapter implements Filterable {
             convertView.setTag(holder);
         } else
             holder = (ViewHolder) convertView.getTag();
-        PhoneBook _entry = contactList.get(position);
-        holder.mName.setText(_entry.getmName());
-        holder.mPhone.setText(_entry.getmPhone());
+        DanhBa _entry = danhBaList.get(position);
+        holder.mName.setText(_entry.getDbname());
+        holder.mPhone.setText(_entry.getDbphone());
         return convertView;
 
 

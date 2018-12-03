@@ -1,4 +1,4 @@
-package com.example.macbook.duan1.Model;
+package com.example.macbook.duan1.model;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -16,8 +16,7 @@ public class ContactDAO {
     public static final String TABLE_NAME = "Contact";
     public static final String COLUMN_NAME = "id";
     public static final String COLUMN_PHONE = "loai";
-    public static final String COLUMN_GENDER = "cannang";
-    public static final String SQL_CONTACT= "CREATE TABLE "+TABLE_NAME+" ("+COLUMN_NAME+" text primary key, "+COLUMN_PHONE+" text, "+COLUMN_GENDER+" text);";
+    public static final String SQL_CONTACT= "CREATE TABLE "+TABLE_NAME+" ("+COLUMN_NAME+" text primary key, "+COLUMN_PHONE+" text);";
     public static final String TAG = "CONTACT_DAO";
 
     public ContactDAO(Context context) {
@@ -29,7 +28,6 @@ public class ContactDAO {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, contact.getmName());
         values.put(COLUMN_PHONE, contact.getmPhone());
-        values.put(COLUMN_GENDER, contact.getmGender());
 
         try {
             if (db.insert(TABLE_NAME, null, values) == -1) {
@@ -45,7 +43,6 @@ public class ContactDAO {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, contact.getmName());
         values.put(COLUMN_PHONE, contact.getmPhone());
-        values.put(COLUMN_GENDER, contact.getmGender());
         int result = db.update(TABLE_NAME, values, COLUMN_NAME+"=?", new String[]{contact.getmName()});
         if (result == 0) {
             return -1;
@@ -61,7 +58,6 @@ public class ContactDAO {
             PhoneBook ee = new PhoneBook();
             ee.setmName(c.getString(0));
             ee.setmPhone(c.getString(1));
-            ee.setmGender(c.getString(2));
             dsCat.add(ee);
             Log.d("//=====", ee.toString());
             c.moveToNext();

@@ -1,4 +1,4 @@
-package com.example.macbook.duan1.Model;
+package com.example.macbook.duan1.model;
 
 public class DanhBa {
     private  String dbname ,dbphone;
@@ -21,7 +21,6 @@ public class DanhBa {
 
     public DanhBa() {
     }
-
     public DanhBa(String dbname, String dbphone) {
         this.dbname = dbname;
         this.dbphone = dbphone;

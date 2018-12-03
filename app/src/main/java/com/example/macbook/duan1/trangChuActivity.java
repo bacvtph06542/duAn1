@@ -8,31 +8,19 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.macbook.duan1.Adapter.PhoneAdapter;
-import com.example.macbook.duan1.Model.ContactDAO;
-import com.example.macbook.duan1.Model.PhoneBook;
-import com.example.macbook.duan1.R;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.macbook.duan1.model.ContactDAO;
+import com.example.macbook.duan1.model.PhoneBook;
 
 public class TrangChuActivity extends AppCompatActivity {
     LinearLayout hinhnen;
-    PhoneAdapter phoneAdapter;
-    private List<PhoneBook> phoneBooks;
     private EditText phone , name;
-    private RadioButton male , female;
-    private TextView save , dongBo;
-
-    private ListView lv;
+    private TextView save ;
     private ContactDAO contactDao;
 
 
@@ -44,7 +32,7 @@ public class TrangChuActivity extends AppCompatActivity {
         hinhnen.setBackgroundResource(R.drawable.manhinh);
         Sum();
 
-// xin quyen cho android 6.0 tro len
+        // xin quyen cho android 6.0 tro len
         int Call = ContextCompat.checkSelfPermission(this,Manifest.permission.CALL_PHONE);
         int DanhBa = ContextCompat.checkSelfPermission(this,Manifest.permission.READ_CONTACTS);
         int Camera = ContextCompat.checkSelfPermission(this,Manifest.permission.CAMERA);
@@ -57,9 +45,7 @@ public class TrangChuActivity extends AppCompatActivity {
                     Manifest.permission.CALL_PHONE,
                     Manifest.permission.CAMERA},1);
         }
-//==================================================================//
-
-
+        //==================================================================//
 
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,11 +55,7 @@ public class TrangChuActivity extends AppCompatActivity {
                 String namee = name.getText().toString();
                 String phonee = phone.getText().toString();
                 PhoneBook contact = null;
-                try {
-                    contact = new PhoneBook(namee,phonee);
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
+                contact = new PhoneBook(namee,phonee);
 
                 if (contactDao.insertContact(contact) > 0) {
                     Toast.makeText(getApplicationContext(), "Add successfully", Toast.LENGTH_SHORT).show();
@@ -83,8 +65,6 @@ public class TrangChuActivity extends AppCompatActivity {
                     name.setError("Add error");
 
                 }
-
-
             }
         });
 
@@ -94,10 +74,7 @@ public class TrangChuActivity extends AppCompatActivity {
     public void Sum(){
         phone = findViewById(R.id.edt_phone);
         name = findViewById(R.id.edt_name);
-        male = findViewById(R.id.rdo_male);
-        female = findViewById(R.id.rdo_female);
         save = findViewById(R.id.btn_save);
-        dongBo = findViewById(R.id.dongbo);
     }
 
     public void listPhone(View view) {

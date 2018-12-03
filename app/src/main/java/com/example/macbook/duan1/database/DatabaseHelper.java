@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.macbook.duan1.Model.ContactDAO;
+import com.example.macbook.duan1.model.ContactDAO;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 

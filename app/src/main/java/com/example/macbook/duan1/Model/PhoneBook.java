@@ -1,24 +1,18 @@
-package com.example.macbook.duan1.Model;
+package com.example.macbook.duan1.model;
 
-import android.widget.EditText;
+public class PhoneBook  {
+    private  String mName , mPhone ;
 
-public class PhoneBook {
-    private  String mName , mPhone , mGender;
-    private int mImg;
-
-    public PhoneBook(String mName, String mPhone) {
-        this.mName = mName;
-        this.mPhone = mPhone;
-    }
-
-    public PhoneBook(String mName, String mPhone, String mGender, int mImg) {
-        this.mName = mName;
-        this.mPhone = mPhone;
-        this.mGender = mGender;
-        this.mImg = mImg;
-    }
 
     public PhoneBook() {
+    }
+
+    public PhoneBook(String mName, String mPhone, String mGender, byte[] mImg) {
+        this.mName = mName;
+        this.mPhone = mPhone;
+    }
+
+    public PhoneBook(String namee, String phonee) {
     }
 
     public String getmName() {
@@ -37,19 +31,8 @@ public class PhoneBook {
         this.mPhone = mPhone;
     }
 
-    public String getmGender() {
-        return mGender;
-    }
-
-    public void setmGender(String mGender) {
-        this.mGender = mGender;
-    }
-
-    public int getmImg() {
-        return mImg;
-    }
-
-    public void setmImg(int mImg) {
-        this.mImg = mImg;
+    @Override
+    public String toString() {
+        return mName +mPhone;
     }
 }

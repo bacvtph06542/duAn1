@@ -5,12 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/img"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:src="@drawable/camera"/>
-
     <LinearLayout
         android:layout_weight="1"
         android:orientation="vertical"
@@ -21,7 +15,7 @@
             android:textSize="17dp"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="Name"
             android:id="@+id/tv_name"/>
@@ -30,7 +24,7 @@
             android:textSize="20dp"
             android:layout_marginTop="10dp"
             android:gravity="center"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="phone"
             android:id="@+id/tv_phone"/>
@@ -38,13 +32,6 @@
 
     </LinearLayout>
 
-    <!--<TextView-->
-        <!--android:layout_margin="5dp"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="tv_sex"-->
-        <!--android:id="@+id/tv_sex"-->
-        <!--android:layout_gravity="center"/>-->
 
     <LinearLayout
         android:orientation="vertical"

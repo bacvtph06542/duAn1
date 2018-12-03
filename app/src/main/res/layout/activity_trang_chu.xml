@@ -9,6 +9,15 @@
     android:layout_height="match_parent"
     tools:context=".TrangChuActivity">
 
+    <TextView
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contact"
+        android:textSize="40dp"
+        />
+
     <EditText
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
@@ -28,33 +37,7 @@
         android:hint="Phone"
         android:id="@+id/edt_phone"/>
 
-    <RadioGroup
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginLeft="16dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-
-        <RadioButton
-            android:textColor="@color/colorText"
-            android:checked="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Male"
-            android:id="@+id/rdo_male"
-            android:layout_marginRight="50dp"/>
-
-        <RadioButton
-            android:textColor="@color/colorText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Female"
-            android:id="@+id/rdo_female"/>
-
-    </RadioGroup>
 
 
 <LinearLayout
@@ -108,16 +91,9 @@
 
     </LinearLayout>
 
+
+
 </LinearLayout>
-
-    <TextView
-        android:id="@+id/dongbo"
-        android:textSize="20dp"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="synchronized"/>
-
 
 
 </LinearLayout>
